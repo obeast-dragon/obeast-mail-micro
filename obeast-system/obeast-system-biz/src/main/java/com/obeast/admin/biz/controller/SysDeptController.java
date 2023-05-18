@@ -1,13 +1,7 @@
 package com.obeast.admin.biz.controller;
 
 import cn.hutool.core.lang.tree.Tree;
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.obeast.admin.api.entity.SysRole;
 import com.obeast.admin.biz.service.SysDeptService;
 import com.obeast.admin.api.entity.SysDept;
 import com.obeast.common.core.base.CommonResult;

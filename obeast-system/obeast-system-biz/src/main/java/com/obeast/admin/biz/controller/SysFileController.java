@@ -45,7 +45,7 @@ public class SysFileController {
 	 */
 	@Operation(summary = "分页查询", description = "分页查询")
 	@GetMapping("/page")
-	public CommonResult<IPage<SysFile>> getSysFilePage(Page page, SysFile sysFile) {
+	public CommonResult<IPage<SysFile>> getSysFilePage(Page<SysFile> page, SysFile sysFile) {
 		return CommonResult.success(sysFileService.page(page, Wrappers.<SysFile>lambdaQuery()
 			.like(StrUtil.isNotBlank(sysFile.getFileName()), SysFile::getFileName, sysFile.getFileName())));
 	}

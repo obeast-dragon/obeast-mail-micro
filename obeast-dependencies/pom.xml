@@ -98,12 +98,14 @@
                 <version>${obeast.common.version}</version>
             </dependency>
 
-            <!--文件管理-->
             <dependency>
                 <groupId>com.obeast</groupId>
-                <artifactId>oss-spring-boot-starter</artifactId>
-                <version>${obeast-oss.version}</version>
+                <artifactId>obeast-product-api</artifactId>
+                <version>${obeast.common.version}</version>
             </dependency>
+
+
+
             <!-- 系统版本    -->
 
 
@@ -149,12 +151,6 @@
             </dependency>
 
             <!--minio        -->
-            <!--高版本minio依赖于okhttp     -->
-            <dependency>
-                <groupId>io.minio</groupId>
-                <artifactId>minio</artifactId>
-                <version>${minio.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
@@ -173,12 +169,12 @@
                 <artifactId>aliyun-sms-spring-boot-starter</artifactId>
                 <version>${sms.version}</version>
             </dependency>
-            <!--  seata kryo 序列化-->
-            <dependency>
-                <groupId>io.seata</groupId>
-                <artifactId>seata-serializer-kryo</artifactId>
-                <version>${seata.version}</version>
-            </dependency>
+<!--            &lt;!&ndash;  seata kryo 序列化&ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>io.seata</groupId>-->
+<!--                <artifactId>seata-serializer-kryo</artifactId>-->
+<!--                <version>${seata.version}</version>-->
+<!--            </dependency>-->
             <!--orm 相关-->
             <dependency>
                 <groupId>com.baomidou</groupId>

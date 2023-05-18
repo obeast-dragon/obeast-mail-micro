@@ -18,6 +18,10 @@
         <module>obeast-gateway</module>
         <module>obeast-auth</module>
         <module>obeast-register</module>
+        <module>obeast-product</module>
+        <module>obeast-order</module>
+        <module>obeast-market</module>
+        <module>obeast-member</module>
     </modules>
 
     <properties>
