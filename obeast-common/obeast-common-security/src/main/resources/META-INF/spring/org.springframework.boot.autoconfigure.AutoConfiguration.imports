@@ -1,0 +1,7 @@
+com.obeast.common.security.service.ObeastUserDetailsServiceImpl
+com.obeast.common.security.service.ObeastAppUserDetailsServiceImpl
+com.obeast.common.security.service.ObeastRedisOAuth2AuthorizationService
+com.obeast.common.security.service.ObeastRedisOAuth2AuthorizationConsentService
+com.obeast.common.security.component.ObeastSecurityInnerAspect
+com.obeast.common.security.component.ObeastSecurityMessageSourceConfiguration
+com.obeast.common.security.service.ObeastRemoteRegisteredClientRepository

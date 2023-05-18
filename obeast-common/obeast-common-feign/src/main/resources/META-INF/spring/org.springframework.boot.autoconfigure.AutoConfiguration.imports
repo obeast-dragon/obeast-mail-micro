@@ -1,0 +1,4 @@
+com.obeast.common.feign.ObeastFeignAutoConfiguration
+com.obeast.common.feign.ObeastFeignRetryAutoConfiguration
+com.obeast.common.feign.sentinel.SentinelAutoConfiguration
+com.obeast.common.feign.sentinel.handle.GlobalBizExceptionHandler

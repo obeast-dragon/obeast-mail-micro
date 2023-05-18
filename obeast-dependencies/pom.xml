@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.obeast</groupId>
+    <artifactId>obeast-dependencies</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--  项目      -->
+        <obeast-oss.version>1.0-SNAPSHOT</obeast-oss.version>
+        <obeast.common.version>${project.version}</obeast.common.version>
+        <!--   数据库   -->
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <mysql.version>8.0.31</mysql.version>
+        <!-- API接口       -->
+        <springdoc.version>1.6.9</springdoc.version>
+        <swagger.core.version>2.2.0</swagger.core.version>
+        <!-- 中间件       -->
+        <sentinel.version>1.8.4</sentinel.version>
+        <seata.version>1.5.2</seata.version>
+        <minio.version>8.4.4</minio.version>
+        <okhttp.version>4.10.0</okhttp.version>
+        <aws.version>1.12.423</aws.version>
+        <!-- 工具包       -->
+        <fastjson.version>1.2.83</fastjson.version>
+        <excel.version>3.1.1</excel.version>
+        <oss.version>1.0.5</oss.version>
+        <sms.version>2.0.2</sms.version>
+        <hutool.version>5.8.15</hutool.version>
+        <mica.version>2.7.4</mica.version>
+        <!--  日志     -->
+        <log4j2.version>2.17.1</log4j2.version>
+        <!--   插件     -->
+        <spring.checkstyle.plugin>0.0.34</spring.checkstyle.plugin>
+        <git.commit.plugin>4.9.9</git.commit.plugin>
+
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 系统版本    -->
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-core</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-feign</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-oss</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-log</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-mybatis</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-security</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+
+            <!--接口文档-->
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-swagger</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+
+            <!--xss 过滤-->
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-common-xss</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-system-api</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
+
+            <!--文件管理-->
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>oss-spring-boot-starter</artifactId>
+                <version>${obeast-oss.version}</version>
+            </dependency>
+            <!-- 系统版本    -->
+
+
+
+            <!-- mysql  -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--springdoc -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webmvc-core</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-security</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <!--fastjson 版本-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- excel 导入导出 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${excel.version}</version>
+            </dependency>
+
+            <!--minio        -->
+            <!--高版本minio依赖于okhttp     -->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${aws.version}</version>
+            </dependency>
+
+
+            <!--  阿里云短信下发 -->
+            <dependency>
+                <groupId>io.springboot.sms</groupId>
+                <artifactId>aliyun-sms-spring-boot-starter</artifactId>
+                <version>${sms.version}</version>
+            </dependency>
+            <!--  seata kryo 序列化-->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-serializer-kryo</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <!--orm 相关-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--hutool bom 工具类-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--mica bom 工具类 -->
+            <!--TODO: 测试否可以移出            -->
+            <dependency>
+                <groupId>net.dreamlu</groupId>
+                <artifactId>mica-bom</artifactId>
+                <version>${mica.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

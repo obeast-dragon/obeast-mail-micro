@@ -1,0 +1,2 @@
+com.obeast.common.log.LogAutoConfiguration
+com.obeast.common.log.init.ApplicationLoggerInitializer

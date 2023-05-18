@@ -1,0 +1,6 @@
+com.obeast.common.core.config.TaskExecutorConfiguration
+com.obeast.common.core.config.JacksonConfiguration
+com.obeast.common.core.config.RedisTemplateConfiguration
+com.obeast.common.core.config.RestTemplateConfiguration
+com.obeast.common.core.utils.SpringBeanUtil
+com.obeast.common.core.config.WebMvcConfiguration

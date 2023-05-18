@@ -1,0 +1,16 @@
+package com.obeast.admin.biz.mapper;
+
+import com.obeast.admin.api.entity.SysDict;
+import com.obeast.common.mybatis.base.BaseDao;
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * @author wxl
+ * Date 2023/4/10 0:19
+ * @version 1.0
+ * Description: 字典表 Mapper 接口
+ */
+@Mapper
+public interface SysDictMapper extends BaseDao<SysDict> {
+
+}

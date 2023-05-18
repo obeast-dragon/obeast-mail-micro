@@ -1,0 +1,7 @@
+com.obeast.admin.api.feign.RemoteClientDetailsService
+com.obeast.admin.api.feign.RemoteDictService
+com.obeast.admin.api.feign.RemoteDeptService
+com.obeast.admin.api.feign.RemoteLogService
+com.obeast.admin.api.feign.RemoteTokenService
+com.obeast.admin.api.feign.RemoteUserService
+com.obeast.admin.api.feign.RemoteParamService
