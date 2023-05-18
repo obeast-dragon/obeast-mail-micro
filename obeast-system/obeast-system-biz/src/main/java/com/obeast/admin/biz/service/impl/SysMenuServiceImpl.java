@@ -71,7 +71,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 	}
 
 	@Override
-//	@CacheEvict(value = CacheConstants.MENU_DETAILS, allEntries = true)
+	@CacheEvict(value = CacheConstants.MENU_DETAILS, allEntries = true)
 	public Boolean updateMenuById(SysMenu sysMenu) {
 		return this.updateById(sysMenu);
 	}
