@@ -26,58 +26,62 @@ import java.util.*;
  */
 public interface ObeastUserDetailsService extends UserDetailsService, Ordered {
 
-	/**
-	 * 是否支持此客户端校验
-	 * @param clientId 目标客户端
-	 * @return true/false
-	 */
-	default boolean support(String clientId, String grantType) {
-		return true;
-	}
+    /**
+     * 是否支持此客户端校验
+     *
+     * @param clientId 目标客户端
+     * @return true/false
+     */
+    default boolean support(String clientId, String grantType) {
+        return true;
+    }
 
-	/**
-	 * 排序值 默认取最大的
-	 * @return 排序值
-	 */
-	default int getOrder() {
-		return 0;
-	}
+    /**
+     * 排序值 默认取最大的
+     *
+     * @return 排序值
+     */
+    default int getOrder() {
+        return 0;
+    }
 
-	/**
-	 * 构建userdetails
-	 * @param result 用户信息
-	 * @return UserDetails
-	 */
-	default UserDetails getUserDetails(CommonResult<UserInfo> result) {
-		UserInfo info = Optional.of(result.getData()).orElseThrow(() -> new UsernameNotFoundException("用户不存在"));
+    /**
+     * 构建userdetails
+     *
+     * @param result 用户信息
+     * @return UserDetails
+     */
+    default UserDetails getUserDetails(CommonResult<UserInfo> result) {
+        UserInfo info = Optional.of(result.getData()).orElseThrow(() -> new UsernameNotFoundException("用户不存在"));
 
-		Set<String> dbAuthsSet = new HashSet<>();
+        Set<String> dbAuthsSet = new HashSet<>();
 
-		if (ArrayUtil.isNotEmpty(info.getRoles())) {
-			// 获取角色
-			Arrays.stream(info.getRoles()).forEach(role -> dbAuthsSet.add(RoleConstants.ROLE + role));
-			// 获取资源
-			dbAuthsSet.addAll(Arrays.asList(info.getPermissions()));
+        if (ArrayUtil.isNotEmpty(info.getRoles())) {
+            // 获取角色
+            Arrays.stream(info.getRoles()).forEach(role -> dbAuthsSet.add(RoleConstants.ROLE + role));
+            // 获取资源
+            dbAuthsSet.addAll(Arrays.asList(info.getPermissions()));
 
-		}
+        }
 
-		Collection<GrantedAuthority> authorities = AuthorityUtils
-			.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-		SysUser user = info.getSysUser();
+        Collection<GrantedAuthority> authorities = AuthorityUtils
+                .createAuthorityList(dbAuthsSet.toArray(new String[0]));
+        SysUser user = info.getSysUser();
 
-		// 构造security用户
-		return new ObeastUser(user.getUserId(), user.getDeptId(), user.getUsername(),
-				SecurityConstants.BCRYPT + user.getPassword(), user.getPhone(), true, true, true,
-				StrUtil.equals(user.getLockFlag(), CommonConstants.STATUS_NORMAL), authorities);
-	}
+        // 构造security用户
+        return new ObeastUser(user.getUserId(), user.getDeptId(), user.getUsername(),
+                SecurityConstants.BCRYPT + user.getPassword(), user.getPhone(), user.getEmail(), user.getAvatar(), true, true, true,
+                StrUtil.equals(user.getLockFlag(), CommonConstants.STATUS_NORMAL), authorities);
+    }
 
-	/**
-	 * 通过用户实体查询
-	 * @param obeastUser user
-	 * @return
-	 */
-	default UserDetails loadUserByUser(ObeastUser obeastUser) {
-		return this.loadUserByUsername(obeastUser.getUsername());
-	}
+    /**
+     * 通过用户实体查询
+     *
+     * @param obeastUser user
+     * @return
+     */
+    default UserDetails loadUserByUser(ObeastUser obeastUser) {
+        return this.loadUserByUsername(obeastUser.getUsername());
+    }
 
 }

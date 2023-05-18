@@ -20,51 +20,67 @@ import java.util.Map;
  */
 public class ObeastUser extends User implements OAuth2AuthenticatedPrincipal {
 
-	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
+    private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
-	private final Map<String, Object> attributes = new HashMap<>();
+    private final Map<String, Object> attributes = new HashMap<>();
 
-	/**
-	 * 用户ID
-	 */
-	@Getter
-	@JsonSerialize(using = ToStringSerializer.class)
-	private final Long id;
+    /**
+     * 用户ID
+     */
+    @Getter
+    @JsonSerialize(using = ToStringSerializer.class)
+    private final Long id;
 
-	/**
-	 * 部门ID
-	 */
-	@Getter
-	@JsonSerialize(using = ToStringSerializer.class)
-	private final Long deptId;
+    /**
+     * 部门ID
+     */
+    @Getter
+    @JsonSerialize(using = ToStringSerializer.class)
+    private final Long deptId;
 
-	/**
-	 * 手机号
-	 */
-	@Getter
-	private final String phone;
+    /**
+     * 手机号
+     */
+    @Getter
+    private final String phone;
 
-	public ObeastUser(Long id, Long deptId, String username, String password, String phone, boolean enabled,
-					  boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked,
-					  Collection<? extends GrantedAuthority> authorities) {
-		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-		this.id = id;
-		this.deptId = deptId;
-		this.phone = phone;
-	}
+    /**
+     * 头像
+     * */
+    @Getter
+    private final String email;
 
-	/**
-	 * Get the OAuth 2.0 token attributes
-	 * @return the OAuth 2.0 token attributes
-	 */
-	@Override
-	public Map<String, Object> getAttributes() {
-		return this.attributes;
-	}
+    /**
+     * 头像
+     * */
+    @Getter
+    private final String avatar;
 
-	@Override
-	public String getName() {
-		return this.getUsername();
-	}
+
+    public ObeastUser(Long id, Long deptId, String username, String password, String phone, String email, String avatar, boolean enabled,
+                      boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked,
+                      Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+        this.id = id;
+        this.deptId = deptId;
+        this.phone = phone;
+        this.email = email;
+        this.avatar = avatar;
+    }
+
+    /**
+     * Get the OAuth 2.0 token attributes
+     *
+     * @return the OAuth 2.0 token attributes
+     */
+    @Override
+    public Map<String, Object> getAttributes() {
+        return this.attributes;
+    }
+
+    @Override
+    public String getName() {
+        return this.getUsername();
+    }
 
 }
