@@ -40,7 +40,7 @@ public class CategoryEntity implements Serializable {
 	/**
 	 * 父分类id
 	 */
-	private Long parentCid;
+	private Long parentId;
 
 	/**
 	 * 层级
@@ -48,7 +48,7 @@ public class CategoryEntity implements Serializable {
 	private Integer catLevel;
 
 	/**
-	 * 是否显示[0-不显示，1显示]
+	 * 是否显示[0-显示，1-不显示]
 	 */
 	private Integer showStatus;
 

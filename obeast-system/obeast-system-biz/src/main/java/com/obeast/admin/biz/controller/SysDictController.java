@@ -56,7 +56,7 @@ public class SysDictController {
 	 * @return List对象
 	 */
 	@GetMapping("/list")
-	public CommonResult<List<SysDict>> getDictPage(@RequestParam(value = "name", required = false) String name) {
+	public CommonResult<List<SysDict>> getDictList(@RequestParam(value = "name", required = false) String name) {
 		LambdaQueryWrapper<SysDict> lambdaQuery = Wrappers.lambdaQuery();
 		if (StrUtil.isNotBlank(name)) {
 			lambdaQuery.like(SysDict::getDescription, name);

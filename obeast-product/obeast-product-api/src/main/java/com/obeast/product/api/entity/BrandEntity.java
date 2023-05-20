@@ -45,10 +45,10 @@ public class BrandEntity implements Serializable {
 	/**
 	 * 介绍
 	 */
-	private String descript;
+	private String describe;
 
 	/**
-	 * 显示状态[0-不显示；1-显示]
+	 * 显示状态[0-显示；1-不显示]
 	 */
 	private Integer showStatus;
 
