@@ -15,11 +15,11 @@ import lombok.Data;
  * @author wxl
  * Date 2023-05-21 21:44:04
  * @version 1.0
- * Description: 
+ * Description: 会员收藏的商品
  */
 @Data
-@TableName("undo_log")
-public class UndoLogEntity implements Serializable {
+@TableName("ums_member_collect_spu")
+public class MemberCollectSpuEntity implements Serializable {
 
 	@Serial
 	@TableField(exist = false)
@@ -27,49 +27,34 @@ public class UndoLogEntity implements Serializable {
 
 
 	/**
-	 * 
+	 * id
 	 */
 	@TableId(type = IdType.AUTO)
 	private Long id;
 
 	/**
-	 * 
+	 * 会员id
 	 */
-	private Long branchId;
+	private Long memberId;
 
 	/**
-	 * 
+	 * spu_id
 	 */
-	private String xid;
+	private Long spuId;
 
 	/**
-	 * 
+	 * spu_name
 	 */
-	private String context;
+	private String spuName;
 
 	/**
-	 * 
+	 * spu_img
 	 */
-	private Object rollbackInfo;
+	private String spuImg;
 
 	/**
-	 * 
+	 * create_time
 	 */
-	private Integer logStatus;
-
-	/**
-	 * 
-	 */
-	private Date logCreated;
-
-	/**
-	 * 
-	 */
-	private Date logModified;
-
-	/**
-	 * 
-	 */
-	private String ext;
+	private Date createTime;
 
 }

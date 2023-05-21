@@ -15,11 +15,11 @@ import lombok.Data;
  * @author wxl
  * Date 2023-05-21 21:44:04
  * @version 1.0
- * Description: 
+ * Description: 积分变化历史记录
  */
 @Data
-@TableName("undo_log")
-public class UndoLogEntity implements Serializable {
+@TableName("ums_integration_change_history")
+public class IntegrationChangeHistoryEntity implements Serializable {
 
 	@Serial
 	@TableField(exist = false)
@@ -27,49 +27,34 @@ public class UndoLogEntity implements Serializable {
 
 
 	/**
-	 * 
+	 * id
 	 */
 	@TableId(type = IdType.AUTO)
 	private Long id;
 
 	/**
-	 * 
+	 * member_id
 	 */
-	private Long branchId;
+	private Long memberId;
 
 	/**
-	 * 
+	 * create_time
 	 */
-	private String xid;
+	private Date createTime;
 
 	/**
-	 * 
+	 * 变化的值
 	 */
-	private String context;
+	private Integer changeCount;
 
 	/**
-	 * 
+	 * 备注
 	 */
-	private Object rollbackInfo;
+	private String note;
 
 	/**
-	 * 
+	 * 来源[0->购物；1->管理员修改;2->活动]
 	 */
-	private Integer logStatus;
-
-	/**
-	 * 
-	 */
-	private Date logCreated;
-
-	/**
-	 * 
-	 */
-	private Date logModified;
-
-	/**
-	 * 
-	 */
-	private String ext;
+	private Integer sourceTyoe;
 
 }

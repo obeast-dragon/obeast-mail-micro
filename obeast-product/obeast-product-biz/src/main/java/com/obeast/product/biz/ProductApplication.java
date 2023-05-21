@@ -1,12 +1,11 @@
 package com.obeast.product.biz;
 
-import com.obeast.common.feign.annotation.EnablePigFeignClients;
-import com.obeast.common.security.annotation.EnablePigResourceServer;
+import com.obeast.common.feign.annotation.EnableObeastFeignClients;
+import com.obeast.common.security.annotation.EnableObeastResourceServer;
 import com.obeast.common.swagger.annotation.EnableObeastSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author wxl
@@ -15,8 +14,8 @@ import org.springframework.context.ConfigurableApplicationContext;
  * Description: 商品服务
  */
 @EnableObeastSwagger
-@EnablePigResourceServer
-@EnablePigFeignClients
+@EnableObeastResourceServer
+@EnableObeastFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 public class ProductApplication {

@@ -1,6 +1,6 @@
 package com.obeast.admin.auth;
 
-import com.obeast.common.feign.annotation.EnablePigFeignClients;
+import com.obeast.common.feign.annotation.EnableObeastFeignClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @version 1.0
  * Description: 授权服务
  */
-@EnablePigFeignClients
+@EnableObeastFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 public class AuthApplication {

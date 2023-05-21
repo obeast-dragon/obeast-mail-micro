@@ -15,11 +15,11 @@ import lombok.Data;
  * @author wxl
  * Date 2023-05-21 21:44:04
  * @version 1.0
- * Description: 
+ * Description: 会员收货地址
  */
 @Data
-@TableName("undo_log")
-public class UndoLogEntity implements Serializable {
+@TableName("ums_member_receive_address")
+public class MemberReceiveAddressEntity implements Serializable {
 
 	@Serial
 	@TableField(exist = false)
@@ -27,49 +27,59 @@ public class UndoLogEntity implements Serializable {
 
 
 	/**
-	 * 
+	 * id
 	 */
 	@TableId(type = IdType.AUTO)
 	private Long id;
 
 	/**
-	 * 
+	 * member_id
 	 */
-	private Long branchId;
+	private Long memberId;
 
 	/**
-	 * 
+	 * 收货人姓名
 	 */
-	private String xid;
+	private String name;
 
 	/**
-	 * 
+	 * 电话
 	 */
-	private String context;
+	private String phone;
 
 	/**
-	 * 
+	 * 邮政编码
 	 */
-	private Object rollbackInfo;
+	private String postCode;
 
 	/**
-	 * 
+	 * 省份/直辖市
 	 */
-	private Integer logStatus;
+	private String province;
 
 	/**
-	 * 
+	 * 城市
 	 */
-	private Date logCreated;
+	private String city;
 
 	/**
-	 * 
+	 * 区
 	 */
-	private Date logModified;
+	private String region;
 
 	/**
-	 * 
+	 * 详细地址(街道)
 	 */
-	private String ext;
+	private String detailAddress;
+
+	/**
+	 * 省市区代码
+	 */
+	private String areacode;
+
+	/**
+	 * 是否默认
+	 */
+	private Integer defaultStatus;
 
 }
