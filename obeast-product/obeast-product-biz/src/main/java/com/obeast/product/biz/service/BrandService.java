@@ -20,7 +20,7 @@ public interface BrandService extends IService<BrandEntity> {
      * @param page page
      * @return com.baomidou.mybatisplus.core.metadata.IPage<com.obeast.product.api.entity.BrandEntity>
      */
-    IPage<BrandEntity> pageBrands(Page<BrandEntity> page);
+    IPage<BrandEntity> pageBrands(Page<BrandEntity> page, String name);
 
 
     /**

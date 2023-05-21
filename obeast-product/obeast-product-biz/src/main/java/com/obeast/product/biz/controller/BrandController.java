@@ -1,24 +1,15 @@
 package com.obeast.product.biz.controller;
 
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.obeast.admin.api.entity.SysDict;
-import com.obeast.admin.api.entity.SysDictItem;
 import com.obeast.common.core.base.CommonResult;
 import com.obeast.product.api.entity.BrandEntity;
-import com.obeast.product.api.entity.CategoryEntity;
+import com.obeast.product.biz.service.BrandService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.web.bind.annotation.*;
 
-import com.obeast.product.biz.service.BrandService;
-
 import javax.validation.Valid;
-import java.util.List;
 
 
 /**
@@ -39,14 +30,13 @@ public class BrandController {
      * 分页查询
      *
      * @param page   分页对象
-     * @param dictId dictId
      */
     @GetMapping("/page")
-    public CommonResult<IPage<BrandEntity>> getSysDictItemPage(
+    public CommonResult<IPage<BrandEntity>> page(
             Page<BrandEntity> page,
-            @RequestParam(value = "dictId", required = false) Integer dictId
+            @RequestParam(value = "name", required = false) String name
     ) {
-        return CommonResult.success(brandService.pageBrands(page));
+        return CommonResult.success(brandService.pageBrands(page, name));
     }
 
 

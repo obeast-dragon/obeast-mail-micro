@@ -1,14 +1,12 @@
 package com.obeast.product.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-
-import java.io.Serial;
-import java.io.Serializable;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 
 /**
@@ -21,10 +19,8 @@ import lombok.Data;
 @TableName("pms_brand")
 public class BrandEntity implements Serializable {
 
-	@Serial
 	@TableField(exist = false)
 	private static final long serialVersionUID = 1L;
-
 
 	/**
 	 * 品牌id
@@ -45,7 +41,7 @@ public class BrandEntity implements Serializable {
 	/**
 	 * 介绍
 	 */
-	private String describe;
+	private String description;
 
 	/**
 	 * 显示状态[0-显示；1-不显示]

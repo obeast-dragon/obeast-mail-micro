@@ -39,7 +39,6 @@ public class AdminApplicationTest {
 
     @Test
     void test1() {
-        System.err.println(sysDictService.list());
-        System.err.println(sysDictItemService.list());
+        System.err.println(sysDictService.page(new Page<>()).getRecords());
     }
 }
