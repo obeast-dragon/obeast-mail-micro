@@ -104,6 +104,11 @@
                 <version>${obeast.common.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-member-api</artifactId>
+                <version>${obeast.common.version}</version>
+            </dependency>
 
 
             <!-- 系统版本    -->

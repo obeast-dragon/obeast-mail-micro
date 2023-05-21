@@ -22,7 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,13 +47,12 @@ public class SysFileServiceImpl extends ServiceImpl<SysFileMapper, SysFile> impl
 	 * @param file file
 	 */
 	@Override
-	public CommonResult<?> uploadFile(MultipartFile file) {
+	public Object uploadFile(MultipartFile file) {
 		String fileName = IdUtil.simpleUUID() + StrUtil.DOT + FileUtil.extName(file.getOriginalFilename());
 		Map<String, String> resultMap = new HashMap<>(4);
 		resultMap.put("bucketName", ossProperties.getBucketName());
 		resultMap.put("fileName", fileName);
 		resultMap.put("url", String.format("/admin/sysFile/online/%s/%s", ossProperties.getBucketName(), fileName));
-
 		try {
 			ossTemplate.putObject(ossProperties.getBucketName(), fileName,file.getInputStream(), file.getContentType());
 			// 文件管理数据记录,收集管理追踪文件
@@ -59,9 +60,18 @@ public class SysFileServiceImpl extends ServiceImpl<SysFileMapper, SysFile> impl
 		}
 		catch (Exception e) {
 			log.error("上传失败", e);
-			return CommonResult.error(e.getLocalizedMessage());
+			return e.getLocalizedMessage();
 		}
-		return CommonResult.success(resultMap);
+		return resultMap;
+	}
+
+	@Override
+	public CommonResult<?> uploadFiles(MultipartFile[] files) {
+		List<Object> res = new ArrayList<>();
+		for (MultipartFile file : files) {
+			res.add(this.uploadFile(file));
+		}
+		return CommonResult.success(res);
 	}
 
 	/**

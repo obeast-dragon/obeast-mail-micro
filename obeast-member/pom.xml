@@ -12,8 +12,10 @@
     <artifactId>obeast-member</artifactId>
     <packaging>pom</packaging>
     <description>会员服务</description>
+
     <modules>
         <module>obeast-member-biz</module>
+        <module>obeast-member-api</module>
     </modules>
 
     <properties>

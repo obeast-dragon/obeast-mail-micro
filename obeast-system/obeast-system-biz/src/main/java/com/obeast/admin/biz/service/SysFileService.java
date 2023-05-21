@@ -6,6 +6,7 @@ import com.obeast.common.core.base.CommonResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * @author wxl
@@ -19,7 +20,16 @@ public interface SysFileService extends IService<SysFile> {
 	 * 上传文件
 	 * @param file file
 	 */
-	CommonResult<?> uploadFile(MultipartFile file);
+	Object uploadFile(MultipartFile file);
+
+	/**
+	 * Description: 上传文件
+	 * @author wxl
+	 * Date: 2023/5/21 17:11
+	 * @param files files
+	 * @return com.obeast.common.core.base.CommonResult<?>
+	 */
+	CommonResult<?> uploadFiles(MultipartFile[] files);
 
 	/**
 	 * 读取文件
