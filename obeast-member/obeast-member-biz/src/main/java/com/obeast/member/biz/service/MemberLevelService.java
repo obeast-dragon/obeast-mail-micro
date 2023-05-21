@@ -19,9 +19,10 @@ public interface MemberLevelService extends IService<MemberLevelEntity> {
     * @author wxl
     * Date: 2023/5/20 22:57
     * @param page page
+    * @param name name
     * @return MemberLevelEntity
     */
-    IPage<MemberLevelEntity> pageMemberLevels (Page<MemberLevelEntity> page);
+    IPage<MemberLevelEntity> pageMemberLevels (Page<MemberLevelEntity> page, String name);
 
 
     /**

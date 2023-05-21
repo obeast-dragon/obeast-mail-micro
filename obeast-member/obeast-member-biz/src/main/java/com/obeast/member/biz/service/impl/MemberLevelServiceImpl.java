@@ -1,5 +1,6 @@
 package com.obeast.member.biz.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -23,8 +24,11 @@ import com.obeast.member.biz.service.MemberLevelService;
 public class MemberLevelServiceImpl extends ServiceImpl<MemberLevelMapper, MemberLevelEntity> implements MemberLevelService {
 
     @Override
-    public IPage<MemberLevelEntity> pageMemberLevels(Page<MemberLevelEntity> page) {
+    public IPage<MemberLevelEntity> pageMemberLevels(Page<MemberLevelEntity> page, String name) {
         LambdaQueryWrapper<MemberLevelEntity> queryWrapper = Wrappers.lambdaQuery();
+        if (StrUtil.isNotBlank(name)) {
+            queryWrapper.eq(MemberLevelEntity::getName, name);
+        }
         return this.page(page, queryWrapper);
     }
 

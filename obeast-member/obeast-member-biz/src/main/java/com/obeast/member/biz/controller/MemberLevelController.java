@@ -37,9 +37,11 @@ public class MemberLevelController {
       */
     @GetMapping("/page")
     public CommonResult<IPage<MemberLevelEntity>> page(
-            Page<MemberLevelEntity> page
+            Page<MemberLevelEntity> page,
+            @RequestParam(value = "name", required = false) String name
+
     ) {
-        return CommonResult.success(memberLevelService.pageMemberLevels(page));
+        return CommonResult.success(memberLevelService.pageMemberLevels(page, name));
     }
 
 
