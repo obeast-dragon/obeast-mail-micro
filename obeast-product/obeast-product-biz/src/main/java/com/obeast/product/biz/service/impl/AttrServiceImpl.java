@@ -1,5 +1,11 @@
 package com.obeast.product.biz.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.obeast.product.api.entity.BrandEntity;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -18,4 +24,31 @@ import com.obeast.product.biz.service.AttrService;
 public class AttrServiceImpl extends ServiceImpl<AttrMapper, AttrEntity> implements AttrService {
 
 
+    @Override
+    public IPage<AttrEntity> pageAttrs(Page<AttrEntity> page, String attrName, Integer valueType) {
+        LambdaQueryWrapper<AttrEntity> queryWrapper = Wrappers.lambdaQuery();
+        if (StrUtil.isNotBlank(attrName)){
+            queryWrapper.like(AttrEntity::getAttrName, attrName);
+        }
+        if (valueType != null && valueType != -1){
+            queryWrapper.eq(AttrEntity::getValueType, valueType);
+        }
+        queryWrapper.orderByAsc(AttrEntity::getSort);
+        return this.page(page, queryWrapper);
+    }
+
+    @Override
+    public Boolean saveAttr(AttrEntity attrEntity) {
+        return this.save(attrEntity);
+    }
+
+    @Override
+    public Boolean removeAttrById(Long id) {
+        return this.removeById(id);
+    }
+
+    @Override
+    public Boolean updateAttr(AttrEntity attrEntity) {
+        return this.updateById(attrEntity);
+    }
 }
