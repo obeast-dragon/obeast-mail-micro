@@ -1,13 +1,20 @@
 package com.obeast.product.biz.controller;
 
+import com.obeast.common.core.base.CommonResult;
+import com.obeast.product.api.dto.AttrAttrGroupDTO;
+import com.obeast.product.api.entity.AttrEntity;
+import com.obeast.product.api.entity.CategoryBrandRelEntity;
+import com.obeast.product.api.vo.AttrAttrGroupVo;
+import com.obeast.product.api.vo.CategoryBrandRelVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.obeast.product.biz.service.AttrAttrGroupRelService;
 
+import javax.validation.Valid;
+import java.util.List;
 
 
 /**
@@ -23,5 +30,25 @@ import com.obeast.product.biz.service.AttrAttrGroupRelService;
 public class AttrAttrGroupRelController {
 
     private final AttrAttrGroupRelService attrAttrGroupRelService;
+
+    /**
+     * 查询关联
+     */
+    @GetMapping("/listRel")
+    public CommonResult<List<AttrAttrGroupDTO>> listRelsByBrandId(@RequestParam("attrGroupId") Long attrGroupId) {
+        return CommonResult.success(attrAttrGroupRelService.listAttrByAttrGroupId(attrGroupId));
+    }
+
+
+    /**
+     * 编辑
+     *
+     * @param attrAttrGroupVo attrAttrGroupVo
+     * @return success/false
+     */
+    @PutMapping("/updateRels")
+    public CommonResult<Boolean> update(@Valid @RequestBody AttrAttrGroupVo attrAttrGroupVo) {
+        return CommonResult.success(attrAttrGroupRelService.updateCategoryBrandRel(attrAttrGroupVo));
+    }
 
 }

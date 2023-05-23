@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * @author wxl
@@ -35,6 +37,7 @@ public class AttrEntity implements Serializable {
 	/**
 	 * 属性名
 	 */
+	@NotNull(message = "属性名不能为空")
 	private String attrName;
 
 	/**
@@ -50,6 +53,7 @@ public class AttrEntity implements Serializable {
 	/**
 	 * 可选值列表[用逗号分隔]
 	 */
+	@NotNull(message = "可选值列表不能为空")
 	private String valueSelect;
 
 	/**

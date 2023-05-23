@@ -1,7 +1,6 @@
 package com.obeast.product.biz;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.obeast.product.biz.service.BrandService;
+import com.obeast.product.biz.service.AttrAttrGroupRelService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,10 +15,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ProductApplicationTest {
 
     @Autowired
-    BrandService brandService;
+    AttrAttrGroupRelService attrAttrGroupRelService;
 
     @Test
     void test1() {
-        System.err.println(brandService.page(new Page<>()).getRecords());
+        System.err.println(attrAttrGroupRelService.listAttrByAttrGroupId(2L));
+        System.err.println(attrAttrGroupRelService.listAttrIdByAttrGroupId(2L));
     }
 }
