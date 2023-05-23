@@ -25,7 +25,6 @@ public class CategoryBrandRelEntity implements Serializable {
 	@TableField(exist = false)
 	private static final long serialVersionUID = 1L;
 
-
 	/**
 	 * 
 	 */
@@ -51,5 +50,4 @@ public class CategoryBrandRelEntity implements Serializable {
 	 * 
 	 */
 	private String catelogName;
-
 }

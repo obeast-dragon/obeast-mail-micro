@@ -11,6 +11,8 @@ import com.obeast.product.biz.mapper.BrandMapper;
 import com.obeast.product.biz.service.BrandService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * @author wxl
@@ -44,5 +46,10 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, BrandEntity> impl
     @Override
     public Boolean updateBrand(BrandEntity brandEntity) {
         return this.updateById(brandEntity);
+    }
+
+    @Override
+    public List<BrandEntity> listBrands() {
+        return this.list();
     }
 }

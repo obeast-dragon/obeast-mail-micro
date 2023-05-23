@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 /**
@@ -25,6 +26,16 @@ import javax.validation.Valid;
 public class BrandController {
 
     private final BrandService brandService;
+
+
+    /**
+     * 查询
+     */
+    @GetMapping("/list")
+    public CommonResult<List<BrandEntity>> list() {
+        return CommonResult.success(brandService.listBrands());
+    }
+
 
     /**
      * 分页查询

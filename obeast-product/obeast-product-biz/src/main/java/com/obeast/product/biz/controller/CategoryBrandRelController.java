@@ -1,13 +1,18 @@
 package com.obeast.product.biz.controller;
 
+import com.obeast.common.core.base.CommonResult;
+import com.obeast.product.api.entity.BrandEntity;
+import com.obeast.product.api.entity.CategoryBrandRelEntity;
+import com.obeast.product.api.vo.CategoryBrandRelVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.obeast.product.biz.service.CategoryBrandRelService;
 
+import javax.validation.Valid;
+import java.util.List;
 
 
 /**
@@ -24,4 +29,45 @@ public class CategoryBrandRelController {
 
     private final CategoryBrandRelService categoryBrandRelService;
 
+    /**
+     * 查询关联
+     */
+    @GetMapping("/listRel")
+    public CommonResult<List<CategoryBrandRelEntity>> listRelsByBrandId(@RequestParam("brandId") Long brandId) {
+        return CommonResult.success(categoryBrandRelService.listRelsByBrandId(brandId));
+    }
+
+
+    /**
+     * 添加
+     *
+     * @param categoryBrandRelEntity categoryBrandRelEntity
+     * @return success/false
+     */
+    @PostMapping("/add")
+    public CommonResult<Boolean> save(@Valid @RequestBody CategoryBrandRelEntity categoryBrandRelEntity) {
+        return CommonResult.success(categoryBrandRelService.saveCategoryBrandRel(categoryBrandRelEntity));
+    }
+
+    /**
+     * 删除
+     *
+     * @param id ID
+     * @return success/false
+     */
+    @DeleteMapping("/{id:\\d+}")
+    public CommonResult<Boolean> removeById(@PathVariable Long id) {
+        return CommonResult.success(categoryBrandRelService.removeCategoryBrandRelById(id));
+    }
+
+    /**
+     * 编辑
+     *
+     * @param categoryBrandRelVo categoryBrandRelVo
+     * @return success/false
+     */
+    @PutMapping("/updateRels")
+    public CommonResult<Boolean> update(@Valid @RequestBody CategoryBrandRelVo categoryBrandRelVo) {
+        return CommonResult.success(categoryBrandRelService.updateCategoryBrandRel(categoryBrandRelVo));
+    }
 }

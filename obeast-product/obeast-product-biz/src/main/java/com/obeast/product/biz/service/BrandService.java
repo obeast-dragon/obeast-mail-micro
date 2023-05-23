@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.obeast.product.api.entity.BrandEntity;
 
+import java.util.List;
+
 /**
  * @author wxl
  * Date 2023-05-19 01:37:23
@@ -49,5 +51,14 @@ public interface BrandService extends IService<BrandEntity> {
      * @return java.lang.Boolean
      */
     Boolean updateBrand(BrandEntity brandEntity);
+
+    /**
+     * Description: 查重所有品牌
+     * @author wxl
+     * Date: 2023/5/22 12:56
+     * @return java.util.List<com.obeast.product.api.entity.BrandEntity>
+     */
+    List<BrandEntity> listBrands();
+
 }
 
