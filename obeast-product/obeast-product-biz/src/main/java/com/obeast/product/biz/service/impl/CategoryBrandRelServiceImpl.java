@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.obeast.product.biz.mapper.CategoryBrandRelMapper;
 import com.obeast.product.biz.service.CategoryBrandRelService;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -35,13 +36,19 @@ public class CategoryBrandRelServiceImpl extends ServiceImpl<CategoryBrandRelMap
     }
 
     @Override
-    public List<CategoryBrandRelEntity> listRelsByBrandId(Long brandId) {
+    public List<CategoryBrandRelEntity> listRelsByCategoryId(Long categoryId) {
+        Assert.notNull(categoryId, "商品分类Id不能为空");
         LambdaQueryWrapper<CategoryBrandRelEntity> queryWrapper = Wrappers.lambdaQuery();
-        if (brandId != null) {
-            queryWrapper.eq(CategoryBrandRelEntity::getBrandId, brandId);
-            return this.list(queryWrapper);
-        }
-        return null;
+        queryWrapper.eq(CategoryBrandRelEntity::getCatelogId, categoryId);
+        return this.list(queryWrapper);
+    }
+
+    @Override
+    public List<CategoryBrandRelEntity> listRelsByBrandId(Long brandId) {
+        Assert.notNull(brandId, "品牌Id不能为空");
+        LambdaQueryWrapper<CategoryBrandRelEntity> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.eq(CategoryBrandRelEntity::getBrandId, brandId);
+        return this.list(queryWrapper);
     }
 
     @SneakyThrows

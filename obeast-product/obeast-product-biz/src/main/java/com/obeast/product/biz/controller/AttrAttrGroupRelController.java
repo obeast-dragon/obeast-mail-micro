@@ -1,11 +1,8 @@
 package com.obeast.product.biz.controller;
 
 import com.obeast.common.core.base.CommonResult;
-import com.obeast.product.api.dto.AttrAttrGroupDTO;
-import com.obeast.product.api.entity.AttrEntity;
-import com.obeast.product.api.entity.CategoryBrandRelEntity;
+import com.obeast.product.api.dto.AttrAttrGroupRelsDTO;
 import com.obeast.product.api.vo.AttrAttrGroupVo;
-import com.obeast.product.api.vo.CategoryBrandRelVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
@@ -35,8 +32,8 @@ public class AttrAttrGroupRelController {
      * 查询关联
      */
     @GetMapping("/listRel")
-    public CommonResult<List<AttrAttrGroupDTO>> listRelsByBrandId(@RequestParam("attrGroupId") Long attrGroupId) {
-        return CommonResult.success(attrAttrGroupRelService.listAttrByAttrGroupId(attrGroupId));
+    public CommonResult<List<AttrAttrGroupRelsDTO>> listRelsByBrandId(@RequestParam("attrGroupId") Long attrGroupId) {
+        return CommonResult.success(attrAttrGroupRelService.listAttrDTOByAttrGroupId(attrGroupId));
     }
 
 

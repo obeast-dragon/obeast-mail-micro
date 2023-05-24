@@ -3,6 +3,7 @@ package com.obeast.product.biz.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.obeast.common.core.base.CommonResult;
+import com.obeast.product.api.dto.AttrGroupDTO;
 import com.obeast.product.api.entity.AttrGroupEntity;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.obeast.product.biz.service.AttrGroupService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 /**
@@ -27,6 +29,12 @@ import javax.validation.Valid;
 public class AttrGroupController {
 
     private final AttrGroupService attrGroupService;
+
+
+    @GetMapping("/{catelogId}/withAttr")
+    public CommonResult<List<AttrGroupDTO>> listAttrGroupDTOByCateGory(@PathVariable("catelogId") Long catelogId) {
+        return CommonResult.success(attrGroupService.listAttrGroupDTOByCateGory(catelogId));
+    }
 
     /**
      * 分页查询

@@ -3,6 +3,8 @@ package com.obeast.product.biz.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.obeast.common.core.base.CommonResult;
+import com.obeast.product.api.dto.AttrGroupDTO;
 import com.obeast.product.api.entity.AttrGroupEntity;
 import com.obeast.product.api.entity.AttrGroupEntity;
 
@@ -43,6 +45,8 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
      */
     Boolean removeAttrGroupById(Long id);
 
+
+
     /**
      * Description: 更新
      * @author wxl
@@ -52,6 +56,24 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
      */
     Boolean updateAttrGroup(AttrGroupEntity attrGroupEntity);
 
-    
+
+    /**
+     * Description: 获取分类下所有分组&关联属性
+     * @author wxl
+     * Date: 2023/5/24 11:03
+     * @param  catelogId catelogId
+     * @return java.util.List<com.obeast.product.api.dto.AttrGroupDTO>
+     */
+    List<AttrGroupDTO> listAttrGroupDTOByCateGory(Long catelogId);
+
+    /**
+     * Description: 获取分类下所有分组
+     * @author wxl
+     * Date: 2023/5/24 11:23
+     * @param catelogId  catelogId
+     * @return java.util.List<com.obeast.product.api.entity.AttrGroupEntity>
+     */
+    List<AttrGroupEntity> listAttrGroupByCateGory(Long catelogId);
+
 }
 

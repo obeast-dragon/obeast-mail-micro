@@ -42,12 +42,22 @@ public interface CategoryBrandRelService extends IService<CategoryBrandRelEntity
     Boolean updateCategoryBrandRel(CategoryBrandRelVo categoryBrandRelVo);
 
     /**
-     * Description: 查询关系
+     * Description: 查询关系 by brandId
      * @author wxl
      * Date: 2023/5/22 23:54
      * @param brandId brandId
      * @return java.util.List<com.obeast.product.api.entity.CategoryBrandRelEntity>
      */
     List<CategoryBrandRelEntity> listRelsByBrandId(Long brandId);
+
+
+    /**
+     * Description: 查询关系 by categoryId
+     * @author wxl
+     * Date: 2023/5/24 18:41
+     * @param categoryId  categoryId
+     * @return java.util.List<com.obeast.product.api.entity.CategoryBrandRelEntity>
+     */
+    List<CategoryBrandRelEntity> listRelsByCategoryId(Long categoryId);
 }
 

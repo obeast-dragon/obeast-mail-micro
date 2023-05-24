@@ -1,7 +1,7 @@
 package com.obeast.product.biz.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.obeast.product.api.dto.AttrAttrGroupDTO;
+import com.obeast.product.api.dto.AttrAttrGroupRelsDTO;
 import com.obeast.product.api.entity.AttrAttrGroupRelEntity;
 import com.obeast.product.api.entity.AttrEntity;
 import com.obeast.product.api.vo.AttrAttrGroupVo;
@@ -18,13 +18,23 @@ public interface AttrAttrGroupRelService extends IService<AttrAttrGroupRelEntity
 
 
     /**
-     * Description: 获取属性分组的关联的所有属性
+     * Description: 获取属性分组的关联的所有属性DTO
      * @author wxl
      * Date: 2023/5/23 14:20
      * @param attrGroupId  attrGroupId
      * @return AttrAttrGroupDTO
      */
-    List<AttrAttrGroupDTO> listAttrByAttrGroupId(Long attrGroupId);
+    List<AttrAttrGroupRelsDTO> listAttrDTOByAttrGroupId(Long attrGroupId);
+
+    /**
+     * Description: 获取属性分组的关联的所有属性
+     * @author wxl
+     * Date: 2023/5/24 11:27
+     * @param attrGroupId  attrGroupId
+     * @return java.util.List<com.obeast.product.api.entity.AttrEntity>
+     */
+    List<AttrEntity> listAttrByAttrGroupId(Long attrGroupId);
+
 
 
     /**
@@ -35,6 +45,7 @@ public interface AttrAttrGroupRelService extends IService<AttrAttrGroupRelEntity
      * @return AttrAttrGroupRelEntity
      */
     List<AttrAttrGroupRelEntity> listAttrIdByAttrGroupId(Long attrGroupId);
+
 
     /**
      * Description: 新增

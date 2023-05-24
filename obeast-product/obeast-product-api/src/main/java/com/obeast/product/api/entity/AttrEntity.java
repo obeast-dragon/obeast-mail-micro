@@ -41,7 +41,7 @@ public class AttrEntity implements Serializable {
 	private String attrName;
 
 	/**
-	 * 是否需要检索[0-不需要，1-需要]
+	 * 是否需要检索[0-需要，1-不需要]
 	 */
 	private Integer searchType;
 

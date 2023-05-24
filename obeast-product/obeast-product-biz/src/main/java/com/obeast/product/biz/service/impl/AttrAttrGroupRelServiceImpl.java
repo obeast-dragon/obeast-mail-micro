@@ -2,7 +2,7 @@ package com.obeast.product.biz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.obeast.product.api.dto.AttrAttrGroupDTO;
+import com.obeast.product.api.dto.AttrAttrGroupRelsDTO;
 import com.obeast.product.api.entity.AttrEntity;
 import com.obeast.product.api.vo.AttrAttrGroupVo;
 import com.obeast.product.biz.service.AttrService;
@@ -34,15 +34,21 @@ public class AttrAttrGroupRelServiceImpl extends ServiceImpl<AttrAttrGroupRelMap
     private final AttrService attrService;
 
     @Override
-    public List<AttrAttrGroupDTO> listAttrByAttrGroupId(Long attrGroupId) {
+    public List<AttrAttrGroupRelsDTO> listAttrDTOByAttrGroupId(Long attrGroupId) {
         return this.listAttrIdByAttrGroupId(attrGroupId).stream().map(item -> {
             AttrEntity attrEntity = attrService.getById(item.getAttrId());
-            AttrAttrGroupDTO attrAttrGroupDTO = new AttrAttrGroupDTO();
-            BeanUtils.copyProperties(item, attrAttrGroupDTO);
-            attrAttrGroupDTO.setAttrName(attrEntity.getAttrName());
-            attrAttrGroupDTO.setValueSelect(attrEntity.getValueSelect());
-            return attrAttrGroupDTO;
+            AttrAttrGroupRelsDTO attrAttrGroupRelsDTO = new AttrAttrGroupRelsDTO();
+            BeanUtils.copyProperties(item, attrAttrGroupRelsDTO);
+            attrAttrGroupRelsDTO.setAttrName(attrEntity.getAttrName());
+            attrAttrGroupRelsDTO.setValueSelect(attrEntity.getValueSelect());
+            return attrAttrGroupRelsDTO;
         }).toList();
+    }
+
+
+    @Override
+    public List<AttrEntity> listAttrByAttrGroupId(Long attrGroupId) {
+        return this.listAttrIdByAttrGroupId(attrGroupId).stream().map(item -> attrService.getById(item.getAttrId())).toList();
     }
 
     @Transactional(rollbackFor = Exception.class)

@@ -37,6 +37,14 @@ public class CategoryBrandRelController {
         return CommonResult.success(categoryBrandRelService.listRelsByBrandId(brandId));
     }
 
+    /**
+     * 查询关联
+     */
+    @GetMapping("/listRel/category/{categoryId}")
+    public CommonResult<List<CategoryBrandRelEntity>> listRelsByCategoryId(@PathVariable("categoryId") Long categoryId) {
+        return CommonResult.success(categoryBrandRelService.listRelsByCategoryId(categoryId));
+    }
+
 
     /**
      * 添加

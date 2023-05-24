@@ -10,7 +10,7 @@ import lombok.Data;
  * Description:
  */
 @Data
-public class AttrAttrGroupDTO {
+public class AttrAttrGroupRelsDTO {
 
     private Long id;
 
