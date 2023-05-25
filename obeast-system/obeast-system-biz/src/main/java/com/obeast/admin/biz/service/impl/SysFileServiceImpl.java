@@ -52,7 +52,7 @@ public class SysFileServiceImpl extends ServiceImpl<SysFileMapper, SysFile> impl
 		Map<String, String> resultMap = new HashMap<>(4);
 		resultMap.put("bucketName", ossProperties.getBucketName());
 		resultMap.put("fileName", fileName);
-		resultMap.put("url", String.format("/admin/sysFile/online/%s/%s", ossProperties.getBucketName(), fileName));
+		resultMap.put("url", String.format("/admin/sysFile/%s/%s", ossProperties.getBucketName(), fileName));
 		try {
 			ossTemplate.putObject(ossProperties.getBucketName(), fileName,file.getInputStream(), file.getContentType());
 			// 文件管理数据记录,收集管理追踪文件

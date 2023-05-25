@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.obeast.common.core.base.CommonResult;
 import com.obeast.product.api.entity.AttrEntity;
+import com.obeast.product.biz.service.AttrAttrGroupRelService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.obeast.product.biz.service.AttrService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 /**
@@ -42,6 +44,10 @@ public class AttrController {
         return CommonResult.success(attrService.pageAttrs(page, attrName, valueType));
     }
 
+    @GetMapping("/sale/list/{categoryId}")
+    public CommonResult<List<AttrEntity>> attrSaleListCategoryId (@PathVariable("categoryId") Long categoryId) {
+        return CommonResult.success(attrService.listAttrSaleListCategoryId(categoryId));
+    }
 
     /**
      * 添加

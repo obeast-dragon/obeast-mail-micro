@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.member.biz.service.MemberLevelService;
 
 import javax.validation.Valid;
-
+import java.util.List;
 
 
 /**
@@ -39,9 +39,17 @@ public class MemberLevelController {
     public CommonResult<IPage<MemberLevelEntity>> page(
             Page<MemberLevelEntity> page,
             @RequestParam(value = "name", required = false) String name
-
     ) {
         return CommonResult.success(memberLevelService.pageMemberLevels(page, name));
+    }
+
+
+    /**
+     * 查询
+     */
+    @GetMapping("/list")
+    public CommonResult<List<MemberLevelEntity>> list() {
+        return CommonResult.success(memberLevelService.list());
     }
 
 

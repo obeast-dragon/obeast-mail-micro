@@ -58,7 +58,7 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
 
 
     /**
-     * Description: 获取分类下所有分组&关联属性
+     * Description: 获取分类下所有分组&关联规格属性
      * @author wxl
      * Date: 2023/5/24 11:03
      * @param  catelogId catelogId

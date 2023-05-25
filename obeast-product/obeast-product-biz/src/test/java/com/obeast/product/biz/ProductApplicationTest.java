@@ -2,6 +2,7 @@ package com.obeast.product.biz;
 
 import com.obeast.product.biz.service.AttrAttrGroupRelService;
 import com.obeast.product.biz.service.AttrGroupService;
+import com.obeast.product.biz.service.AttrService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +17,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ProductApplicationTest {
 
     @Autowired
-    AttrGroupService attrGroupService;
+    AttrService attrService;
 
     @Test
     void test1() {
-        System.err.println(attrGroupService.listAttrGroupDTOByCateGory(225L));
-        System.out.println();
-        System.err.println(attrGroupService.listAttrGroupDTOByCateGory(2L));
+        System.err.println(attrService.listAttrSaleListCategoryId(225L));
+        System.err.println(attrService.listAttrSaleListCategoryId(223L));
+
     }
 }

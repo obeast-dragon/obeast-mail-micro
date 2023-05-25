@@ -35,7 +35,7 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroup
     @Override
     public IPage<AttrGroupEntity> pageAttrGroups(Page<AttrGroupEntity> page, Long catelogId, String attrGroupName) {
         LambdaQueryWrapper<AttrGroupEntity> queryWrapper = Wrappers.lambdaQuery();
-        if (catelogId != null){
+        if (catelogId != null) {
             queryWrapper.eq(AttrGroupEntity::getCatelogId, catelogId);
         }
         if (StrUtil.isNotBlank(attrGroupName)) {
@@ -61,7 +61,10 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroup
         return this.listAttrGroupByCateGory(catelogId).stream().map(item -> {
             AttrGroupDTO attrGroupDTO = new AttrGroupDTO();
             attrGroupDTO.setAttrGroup(item);
-            attrGroupDTO.setAttrs(attrAttrGroupRelService.listAttrByAttrGroupId(item.getAttrGroupId()));
+            attrGroupDTO.setAttrs(attrAttrGroupRelService
+                    .listAttrByAttrGroupId(item.getAttrGroupId())
+                    .stream()
+                    .filter(attr -> attr.getAttrType() != 0).toList());
             return attrGroupDTO;
         }).toList();
     }
