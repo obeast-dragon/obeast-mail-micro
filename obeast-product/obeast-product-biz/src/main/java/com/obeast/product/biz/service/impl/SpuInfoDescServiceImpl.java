@@ -30,7 +30,8 @@ public class SpuInfoDescServiceImpl extends ServiceImpl<SpuInfoDescMapper, SpuIn
 
     @Override
     public Boolean saveSpuInfoDesc(SpuInfoDescEntity spuInfoDescEntity) {
-        return this.save(spuInfoDescEntity);
+//        return this.save(spuInfoDescEntity);
+        return Boolean.TRUE;
     }
 
     @Override

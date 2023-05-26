@@ -28,11 +28,10 @@ public class SpuInfoController {
 
     private final SpuInfoService spuInfoService;
 
-
     /**
      * 保存
      */
-    @PostMapping("/save")
+    @PostMapping("/add")
     public CommonResult<Boolean> save(@RequestBody SpuSaveVo spuSaveVo){
         return CommonResult.success(spuInfoService.saveSpuInfo(spuSaveVo));
     }

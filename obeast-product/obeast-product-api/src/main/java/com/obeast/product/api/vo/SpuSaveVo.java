@@ -14,7 +14,7 @@ import java.util.List;
 public class SpuSaveVo {
 
     private String spuName;
-    private String spuDesc;
+    private String spuDescription;
     private Long categoryId;
     private Long brandId;
     private BigDecimal weight;

@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class Images {
 
-    private String imgUrl;
+    private String url;
     private int defaultImg;
 
 }

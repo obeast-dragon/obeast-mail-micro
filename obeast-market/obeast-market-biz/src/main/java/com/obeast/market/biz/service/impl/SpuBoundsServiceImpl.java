@@ -23,14 +23,15 @@ import com.obeast.market.biz.service.SpuBoundsService;
 public class SpuBoundsServiceImpl extends ServiceImpl<SpuBoundsMapper, SpuBoundsEntity> implements SpuBoundsService {
 
     @Override
-    public IPage<SpuBoundsEntity> pageSpuBoundss(Page<SpuBoundsEntity> page) {
+    public IPage<SpuBoundsEntity> pageSpuBounds(Page<SpuBoundsEntity> page) {
         LambdaQueryWrapper<SpuBoundsEntity> queryWrapper = Wrappers.lambdaQuery();
         return this.page(page, queryWrapper);
     }
 
     @Override
     public Boolean saveSpuBounds(SpuBoundsEntity spuBoundsEntity) {
-        return this.save(spuBoundsEntity);
+//        return this.save(spuBoundsEntity);
+        return Boolean.FALSE;
     }
 
     @Override

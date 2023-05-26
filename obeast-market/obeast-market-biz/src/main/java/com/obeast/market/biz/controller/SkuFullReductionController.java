@@ -1,5 +1,6 @@
 package com.obeast.market.biz.controller;
 
+import com.obeast.market.api.to.SkuReductionTo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import com.obeast.market.api.entity.SkuFullReductionEntity;
@@ -13,7 +14,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.market.biz.service.SkuFullReductionService;
 
 import javax.validation.Valid;
-
 
 
 /**
@@ -31,10 +31,10 @@ public class SkuFullReductionController {
     private final SkuFullReductionService skuFullReductionService;
 
     /**
-      * 分页查询
-      *
-      * @param page   分页对象
-      */
+     * 分页查询
+     *
+     * @param page 分页对象
+     */
     @GetMapping("/page")
     public CommonResult<IPage<SkuFullReductionEntity>> page(
             Page<SkuFullReductionEntity> page
@@ -52,6 +52,12 @@ public class SkuFullReductionController {
     @PostMapping("/add")
     public CommonResult<Boolean> save(@Valid @RequestBody SkuFullReductionEntity skuFullReductionEntity) {
         return CommonResult.success(skuFullReductionService.saveSkuFullReduction(skuFullReductionEntity));
+    }
+
+
+    @PostMapping("/addInfo")
+    public CommonResult<?> saveSkuReduction(@RequestBody SkuReductionTo skuReductionTo) {
+        return CommonResult.success();
     }
 
     /**

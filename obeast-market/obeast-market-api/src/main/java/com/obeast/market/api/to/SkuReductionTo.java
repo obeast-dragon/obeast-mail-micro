@@ -1,4 +1,6 @@
-package com.obeast.product.api.vo;
+package com.obeast.market.api.to;
+
+import com.obeast.market.api.vo.MemberPrice;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -6,21 +8,14 @@ import java.util.List;
 
 /**
  * @author wxl
- * Date 2023/5/26 10:46
+ * Date 2023/5/26 19:40
  * @version 1.0
  * Description:
  */
 @Data
-public class Skus {
+public class SkuReductionTo {
 
-    private List<Attr> attr;
-    private String skuName;
-    private BigDecimal price;
-    private String skuTitle;
-    private String skuSubtitle;
-    private List<Images> images;
-    private List<String> descar;
-    private String skuDesc;
+    private Long skuId;
     private int fullCount;
     private BigDecimal discount;
     private int countStatus;

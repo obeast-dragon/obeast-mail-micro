@@ -39,7 +39,7 @@ public class SpuBoundsController {
     public CommonResult<IPage<SpuBoundsEntity>> page(
             Page<SpuBoundsEntity> page
     ) {
-        return CommonResult.success(spuBoundsService.pageSpuBoundss(page));
+        return CommonResult.success(spuBoundsService.pageSpuBounds(page));
     }
 
 

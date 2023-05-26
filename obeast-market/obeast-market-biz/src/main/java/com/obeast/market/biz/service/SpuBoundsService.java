@@ -21,7 +21,7 @@ public interface SpuBoundsService extends IService<SpuBoundsEntity> {
     * @param page page
     * @return SpuBoundsEntity
     */
-    IPage<SpuBoundsEntity> pageSpuBoundss (Page<SpuBoundsEntity> page);
+    IPage<SpuBoundsEntity> pageSpuBounds(Page<SpuBoundsEntity> page);
 
 
     /**
