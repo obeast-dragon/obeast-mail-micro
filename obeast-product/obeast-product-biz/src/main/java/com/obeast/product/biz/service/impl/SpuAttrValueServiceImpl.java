@@ -21,7 +21,7 @@ public class SpuAttrValueServiceImpl extends ServiceImpl<SpuAttrValueMapper, Spu
 
 
     @Override
-    public void saveProductAttr(List<SpuAttrValueEntity> collect) {
-
+    public void saveProductAttr(List<SpuAttrValueEntity> spuAttrValues) {
+        this.saveBatch(spuAttrValues);
     }
 }

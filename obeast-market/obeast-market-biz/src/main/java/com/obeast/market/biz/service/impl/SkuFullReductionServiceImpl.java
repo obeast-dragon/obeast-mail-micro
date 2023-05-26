@@ -1,5 +1,6 @@
 package com.obeast.market.biz.service.impl;
 
+import com.obeast.common.core.base.CommonResult;
 import com.obeast.market.api.entity.MemberPriceEntity;
 import com.obeast.market.api.entity.SkuLadderEntity;
 import com.obeast.market.api.to.SkuReductionTo;
@@ -56,41 +57,46 @@ public class SkuFullReductionServiceImpl extends ServiceImpl<SkuFullReductionMap
     }
 
     @Override
-    public Boolean saveSkuFullInfo(SkuReductionTo skuReductionTo) {
+    public CommonResult<?> saveSkuFullInfo(SkuReductionTo skuReductionTo) {
         //sku的满减信息；beastmail_sms----》sms_sku_ladder、sms_sku_full_reduction\member_price
         //1、满减sms_sku_ladder阶梯价格
-        SkuLadderEntity skuLadder = new SkuLadderEntity();
-        skuLadder.setSkuId(skuReductionTo.getSkuId());
-        skuLadder.setAddOther(skuReductionTo.getCountStatus());
-        skuLadder.setFullCount(skuReductionTo.getFullCount());
-        skuLadder.setDiscount(skuReductionTo.getDiscount());
-        if(skuLadder.getFullCount() > 0){
-            skuLadderService.save(skuLadder);
+       try {
+           SkuLadderEntity skuLadder = new SkuLadderEntity();
+           skuLadder.setSkuId(skuReductionTo.getSkuId());
+           skuLadder.setAddOther(skuReductionTo.getCountStatus());
+           skuLadder.setFullCount(skuReductionTo.getFullCount());
+           skuLadder.setDiscount(skuReductionTo.getDiscount());
+           if(skuLadder.getFullCount() > 0){
+               skuLadderService.save(skuLadder);
 
-        }
+           }
 
-        //2、sms_sku_full_reduction
-        SkuFullReductionEntity skuFullReductionEntity = new SkuFullReductionEntity();
-        BeanUtils.copyProperties(skuReductionTo, skuFullReductionEntity);
-        if (skuFullReductionEntity.getFullPrice().compareTo(new BigDecimal("0")) == 1){
-            this.save(skuFullReductionEntity);
+           //2、sms_sku_full_reduction
+           SkuFullReductionEntity skuFullReductionEntity = new SkuFullReductionEntity();
+           BeanUtils.copyProperties(skuReductionTo, skuFullReductionEntity);
+           if (skuFullReductionEntity.getFullPrice().compareTo(new BigDecimal("0")) == 1){
+               this.save(skuFullReductionEntity);
 
-        }
+           }
 
-        //3、member_price
-        List<MemberPrice> memberPrice = skuReductionTo.getMemberPrice();
-        List<MemberPriceEntity> memberPrices = memberPrice.stream().map(item -> {
-            MemberPriceEntity memberPriceEntity = new MemberPriceEntity();
-            memberPriceEntity.setSkuId(skuReductionTo.getSkuId());
-            memberPriceEntity.setMemberLevelId(item.getId());
-            memberPriceEntity.setMemberLevelName(item.getName());
-            memberPriceEntity.setMemberPrice(item.getPrice());
-            memberPriceEntity.setAddOther(1);
-            return memberPriceEntity;
-        }).filter(item -> item.getMemberPrice().compareTo(new BigDecimal("0")) == 1).toList();
+           //3、member_price
+           List<MemberPrice> memberPrice = skuReductionTo.getMemberPrice();
+           List<MemberPriceEntity> memberPrices = memberPrice.stream().map(item -> {
+               MemberPriceEntity memberPriceEntity = new MemberPriceEntity();
+               memberPriceEntity.setSkuId(skuReductionTo.getSkuId());
+               memberPriceEntity.setMemberLevelId(item.getId());
+               memberPriceEntity.setMemberLevelName(item.getName());
+               memberPriceEntity.setMemberPrice(item.getPrice());
+               memberPriceEntity.setAddOther(1);
+               return memberPriceEntity;
+           }).filter(item -> item.getMemberPrice().compareTo(new BigDecimal("0")) == 1).toList();
 
-        memberPriceService.saveBatch(memberPrices);
-        return Boolean.TRUE;
+           memberPriceService.saveBatch(memberPrices);
+           return CommonResult.success();
+
+       }catch (Exception e) {
+           return CommonResult.error(e.getMessage());
+       }
     }
 
     @Override

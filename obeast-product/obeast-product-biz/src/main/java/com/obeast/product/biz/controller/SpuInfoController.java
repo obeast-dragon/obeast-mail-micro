@@ -32,7 +32,7 @@ public class SpuInfoController {
      * 保存
      */
     @PostMapping("/add")
-    public CommonResult<Boolean> save(@RequestBody SpuSaveVo spuSaveVo){
+    public CommonResult<?> save(@RequestBody SpuSaveVo spuSaveVo){
         return CommonResult.success(spuInfoService.saveSpuInfo(spuSaveVo));
     }
 

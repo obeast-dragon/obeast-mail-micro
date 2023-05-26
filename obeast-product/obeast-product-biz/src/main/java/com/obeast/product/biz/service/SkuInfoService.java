@@ -11,7 +11,13 @@ import com.obeast.product.api.entity.SkuInfoEntity;
  */
 public interface SkuInfoService extends IService<SkuInfoEntity> {
 
-    void saveSkuInfo(SkuInfoEntity skuInfoEntity);
+    /**
+     * Description: 保存
+     * @author wxl
+     * Date: 2023/5/27 0:32
+     * @param skuInfo skuInfo
+     */
+    void saveSkuInfo(SkuInfoEntity skuInfo);
 
 }
 

@@ -13,7 +13,13 @@ import java.util.List;
  */
 public interface SpuAttrValueService extends IService<SpuAttrValueEntity> {
 
-    void saveProductAttr(List<SpuAttrValueEntity> collect);
+    /**
+     * Description: 批处理保存
+     * @author wxl
+     * Date: 2023/5/27 0:31
+     * @param spuAttrValues spuAttrValues
+     */
+    void saveProductAttr(List<SpuAttrValueEntity> spuAttrValues);
 
 }
 

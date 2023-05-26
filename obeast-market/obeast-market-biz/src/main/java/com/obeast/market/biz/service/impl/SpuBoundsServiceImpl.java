@@ -30,8 +30,7 @@ public class SpuBoundsServiceImpl extends ServiceImpl<SpuBoundsMapper, SpuBounds
 
     @Override
     public Boolean saveSpuBounds(SpuBoundsEntity spuBoundsEntity) {
-//        return this.save(spuBoundsEntity);
-        return Boolean.FALSE;
+        return this.save(spuBoundsEntity);
     }
 
     @Override

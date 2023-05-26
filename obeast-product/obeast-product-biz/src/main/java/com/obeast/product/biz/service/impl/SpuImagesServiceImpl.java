@@ -12,6 +12,7 @@ import com.obeast.product.api.entity.SpuImagesEntity;
 import com.obeast.product.biz.service.SpuImagesService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -48,6 +49,14 @@ public class SpuImagesServiceImpl extends ServiceImpl<SpuImagesMapper, SpuImages
 
     @Override
     public void saveImages(Long id, List<String> goodsImgs) {
-
+        if (goodsImgs != null && goodsImgs.size() > 0){
+            List<SpuImagesEntity> spuImages = goodsImgs.stream().map(img -> {
+                SpuImagesEntity spuImagesEntity = new SpuImagesEntity();
+                spuImagesEntity.setSpuId(id);
+                spuImagesEntity.setImgUrl(img);
+                return spuImagesEntity;
+            }).toList();
+            this.saveBatch(spuImages);
+        }
     }
 }

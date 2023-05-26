@@ -7,6 +7,8 @@ import com.obeast.product.biz.mapper.SkuSaleAttrValueMapper;
 import com.obeast.product.api.entity.SkuSaleAttrValueEntity;
 import com.obeast.product.biz.service.SkuSaleAttrValueService;
 
+import java.util.List;
+
 
 /**
  * @author wxl
@@ -18,4 +20,8 @@ import com.obeast.product.biz.service.SkuSaleAttrValueService;
 public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueMapper, SkuSaleAttrValueEntity> implements SkuSaleAttrValueService {
 
 
+    @Override
+    public void saveBatchSkuSaleAttrs(List<SkuSaleAttrValueEntity> skuSaleAttrValues) {
+        this.saveBatch(skuSaleAttrValues);
+    }
 }

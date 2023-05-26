@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.product.api.entity.SkuImagesEntity;
 
+import java.util.List;
+
 
 /**
  * @author wxl
@@ -21,7 +23,7 @@ public interface SkuImagesService extends IService<SkuImagesEntity> {
     * @param page page
     * @return SkuImagesEntity
     */
-    IPage<SkuImagesEntity> pageSkuImagess (Page<SkuImagesEntity> page);
+    IPage<SkuImagesEntity> pageSkuImages(Page<SkuImagesEntity> page);
 
 
     /**
@@ -51,5 +53,13 @@ public interface SkuImagesService extends IService<SkuImagesEntity> {
      */
     Boolean updateSkuImages(SkuImagesEntity skuImagesEntity);
 
+
+    /**
+     * Description: 批处理保存
+     * @author wxl
+     * Date: 2023/5/27 0:33
+     * @param skuImages skuImages
+     */
+    void saveBatchSkuImages(List<SkuImagesEntity> skuImages);
 }
 

@@ -19,7 +19,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfoEntity
 
 
     @Override
-    public void saveSkuInfo(SkuInfoEntity skuInfoEntity) {
-
+    public void saveSkuInfo(SkuInfoEntity skuInfo) {
+        this.save(skuInfo);
     }
 }

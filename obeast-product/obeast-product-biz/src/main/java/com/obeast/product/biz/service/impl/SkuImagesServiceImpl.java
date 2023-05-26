@@ -11,6 +11,7 @@ import com.obeast.product.biz.mapper.SkuImagesMapper;
 import com.obeast.product.api.entity.SkuImagesEntity;
 import com.obeast.product.biz.service.SkuImagesService;
 
+import java.util.List;
 
 
 /**
@@ -23,7 +24,7 @@ import com.obeast.product.biz.service.SkuImagesService;
 public class SkuImagesServiceImpl extends ServiceImpl<SkuImagesMapper, SkuImagesEntity> implements SkuImagesService {
 
     @Override
-    public IPage<SkuImagesEntity> pageSkuImagess(Page<SkuImagesEntity> page) {
+    public IPage<SkuImagesEntity> pageSkuImages(Page<SkuImagesEntity> page) {
         LambdaQueryWrapper<SkuImagesEntity> queryWrapper = Wrappers.lambdaQuery();
         return this.page(page, queryWrapper);
     }
@@ -36,6 +37,11 @@ public class SkuImagesServiceImpl extends ServiceImpl<SkuImagesMapper, SkuImages
     @Override
     public Boolean removeSkuImagesById(Long id) {
         return this.removeById(id);
+    }
+
+    @Override
+    public void saveBatchSkuImages(List<SkuImagesEntity> skuImages) {
+        this.saveBatch(skuImages);
     }
 
     @Override

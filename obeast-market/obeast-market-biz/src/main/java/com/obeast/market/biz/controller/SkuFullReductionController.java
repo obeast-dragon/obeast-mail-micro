@@ -57,7 +57,7 @@ public class SkuFullReductionController {
 
     @PostMapping("/addInfo")
     public CommonResult<?> saveSkuReduction(@RequestBody SkuReductionTo skuReductionTo) {
-        return CommonResult.success(skuFullReductionService.saveSkuFullInfo(skuReductionTo));
+        return skuFullReductionService.saveSkuFullInfo(skuReductionTo);
     }
 
     /**
