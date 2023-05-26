@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.market.api.entity.SkuFullReductionEntity;
+import com.obeast.market.api.to.SkuReductionTo;
 
 
 /**
@@ -51,5 +52,13 @@ public interface SkuFullReductionService extends IService<SkuFullReductionEntity
      */
     Boolean updateSkuFullReduction(SkuFullReductionEntity skuFullReductionEntity);
 
+
+    /**
+     * Description: 保存 skuReductionInfo
+     * @author wxl
+     * Date: 2023/5/27 0:17
+     * @param skuReductionTo skuReductionTo
+     */
+    Boolean saveSkuFullInfo(SkuReductionTo skuReductionTo);
 }
 

@@ -171,9 +171,4 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfoEntity
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(StringUtils.hasText("   "));
-        System.out.println(StringUtils.hasLength("   "));
-        System.out.println(!StringUtils.isEmpty(""));
-    }
 }
