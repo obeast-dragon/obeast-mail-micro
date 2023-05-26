@@ -2,6 +2,7 @@ package com.obeast.product.biz.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.obeast.product.api.entity.SpuInfoEntity;
+import com.obeast.product.api.vo.SpuSaveVo;
 
 /**
  * @author wxl
@@ -11,5 +12,6 @@ import com.obeast.product.api.entity.SpuInfoEntity;
  */
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 
+    Boolean saveSpuInfo(SpuSaveVo spuSaveVo);
 }
 

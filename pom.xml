@@ -22,6 +22,7 @@
         <module>obeast-order</module>
         <module>obeast-market</module>
         <module>obeast-member</module>
+        <module>obeast-ware</module>
     </modules>
 
     <properties>

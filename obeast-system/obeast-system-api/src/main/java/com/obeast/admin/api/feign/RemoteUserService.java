@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author lengleng
- * @date 2019/2/1
+ * @author wxl
+ * Date 2023/5/26 20:10
+ * @version 1.0
+ * Description:
  */
 @FeignClient(contextId = "remoteUserService", value = SysConstants.Server.SYSTEM_SERVICE)
 public interface RemoteUserService {

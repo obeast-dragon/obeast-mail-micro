@@ -18,4 +18,8 @@ import com.obeast.product.biz.service.SkuInfoService;
 public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfoEntity> implements SkuInfoService {
 
 
+    @Override
+    public void saveSkuInfo(SkuInfoEntity skuInfoEntity) {
+
+    }
 }

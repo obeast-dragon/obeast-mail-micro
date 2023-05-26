@@ -10,7 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>obeast-order</artifactId>
+    <packaging>pom</packaging>
     <description>订单服务</description>
+
+    <modules>
+        <module>obeast-order-api</module>
+        <module>obeast-order-biz</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

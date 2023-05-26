@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 /**
- * @author lengleng
- * @date 2020/5/12
- * <p>
- * 查询参数相关
+ * @author wxl
+ * Date 2023/5/26 20:10
+ * @version 1.0
+ * Description: 查询参数相关
  */
 @FeignClient(contextId = "remoteDictService", value = SysConstants.Server.SYSTEM_SERVICE)
 public interface RemoteDictService {

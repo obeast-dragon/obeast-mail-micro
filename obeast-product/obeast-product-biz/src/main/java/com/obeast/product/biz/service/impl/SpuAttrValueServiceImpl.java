@@ -7,6 +7,8 @@ import com.obeast.product.biz.mapper.SpuAttrValueMapper;
 import com.obeast.product.api.entity.SpuAttrValueEntity;
 import com.obeast.product.biz.service.SpuAttrValueService;
 
+import java.util.List;
+
 
 /**
  * @author wxl
@@ -18,4 +20,8 @@ import com.obeast.product.biz.service.SpuAttrValueService;
 public class SpuAttrValueServiceImpl extends ServiceImpl<SpuAttrValueMapper, SpuAttrValueEntity> implements SpuAttrValueService {
 
 
+    @Override
+    public void saveProductAttr(List<SpuAttrValueEntity> collect) {
+
+    }
 }
