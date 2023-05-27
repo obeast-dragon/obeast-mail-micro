@@ -1,7 +1,10 @@
 package com.obeast.product.biz.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.obeast.common.core.base.CommonResult;
+import com.obeast.product.api.entity.AttrEntity;
 import com.obeast.product.api.entity.SpuInfoEntity;
 import com.obeast.product.api.vo.SpuSaveVo;
 
@@ -31,5 +34,23 @@ public interface SpuInfoService extends IService<SpuInfoEntity> {
      * @param spuSaveVo spuSaveVo
      */
     CommonResult<?> saveSpuInfo(SpuSaveVo spuSaveVo);
+
+    IPage<SpuInfoEntity> pageSpuInfo(
+            Page<SpuInfoEntity> page,
+            Long categoryId,
+            Long brandId,
+            Integer publishStatus,
+            String spuName
+    );
+
+    /**
+     * Description: 上架或者下架
+     * @author wxl
+     * Date: 2023/5/28 0:39
+     * @param spuInfoId spuInfoId
+     * @param status status
+     * @return java.lang.Boolean
+     */
+    Boolean updatePublishStatus(Long spuInfoId, Integer status);
 }
 

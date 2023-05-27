@@ -16,6 +16,16 @@ import java.util.Map;
  */
 public interface SysFileService extends IService<SysFile> {
 
+
+	/**
+	 * Description: 查询本地文件
+	 * @author wxl
+	 * Date: 2023/5/27 16:34
+	 * @param originalFilename originalFilename
+	 * @return java.lang.Object
+	 */
+	Object getLocalFileByOriginalName(String originalFilename);
+
 	/**
 	 * 上传文件
 	 * @param file file

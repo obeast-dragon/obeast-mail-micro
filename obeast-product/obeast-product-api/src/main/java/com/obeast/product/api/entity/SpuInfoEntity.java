@@ -5,8 +5,12 @@ import com.baomidou.mybatisplus.annotation.*;
 import java.io.Serial;
 import java.math.BigDecimal;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import com.obeast.common.mybatis.base.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 
 /**
@@ -64,12 +68,12 @@ public class SpuInfoEntity implements Serializable {
 	 * 
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Date createTime;
+	private LocalDateTime createTime;
 
 	/**
 	 * 
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
-	private Date updateTime;
+	private LocalDateTime updateTime;
 
 }

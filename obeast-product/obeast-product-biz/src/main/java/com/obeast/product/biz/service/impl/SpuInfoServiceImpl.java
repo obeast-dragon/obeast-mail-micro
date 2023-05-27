@@ -1,5 +1,11 @@
 package com.obeast.product.biz.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.obeast.common.core.base.CommonResult;
 import com.obeast.product.api.entity.*;
 import com.obeast.product.api.feign.RemoteSpuBoundsService;
@@ -14,6 +20,7 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.obeast.product.biz.mapper.SpuInfoMapper;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
@@ -37,9 +44,6 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfoEntity
     private final SpuImagesService imagesService;
 
 
-    private final AttrService attrService;
-
-
     private final SpuAttrValueService spuAttrValueService;
 
 
@@ -54,6 +58,16 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfoEntity
 
     private final RemoteSpuBoundsService remoteSpuBoundsService;
 
+
+    @Override
+    public Boolean updatePublishStatus(Long spuInfoId, Integer status) {
+        Assert.notNull(spuInfoId, "spuInfoId 不能为空");
+        Assert.notNull(status, "status 不能为空");
+        LambdaUpdateWrapper<SpuInfoEntity> updateWrapper = Wrappers.lambdaUpdate();
+        updateWrapper.eq(SpuInfoEntity::getId, spuInfoId);
+        updateWrapper.set(SpuInfoEntity::getPublishStatus, status);
+        return this.update(updateWrapper);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -157,6 +171,30 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfoEntity
         } catch (Exception e) {
             return CommonResult.error(e.getMessage());
         }
+    }
+
+    @Override
+    public IPage<SpuInfoEntity> pageSpuInfo(
+            Page<SpuInfoEntity> page,
+            Long categoryId,
+            Long brandId,
+            Integer publishStatus,
+            String spuName
+    ) {
+        LambdaQueryWrapper<SpuInfoEntity> queryWrapper = Wrappers.lambdaQuery();
+        if (categoryId != null) {
+            queryWrapper.eq(SpuInfoEntity::getCategoryId, categoryId);
+        }
+        if (brandId != null) {
+            queryWrapper.eq(SpuInfoEntity::getBrandId, brandId);
+        }
+        if (publishStatus != null) {
+            queryWrapper.eq(SpuInfoEntity::getPublishStatus, publishStatus);
+        }
+        if (StrUtil.isNotBlank(spuName)) {
+            queryWrapper.eq(SpuInfoEntity::getSpuName, spuName);
+        }
+        return this.page(page, queryWrapper);
     }
 
 }

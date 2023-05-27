@@ -1,8 +1,7 @@
 package com.obeast.product.biz;
 
-import com.obeast.product.biz.service.AttrAttrGroupRelService;
-import com.obeast.product.biz.service.AttrGroupService;
-import com.obeast.product.biz.service.AttrService;
+import com.obeast.product.api.entity.SpuInfoEntity;
+import com.obeast.product.biz.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,12 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ProductApplicationTest {
 
     @Autowired
-    AttrService attrService;
+    SpuInfoService spuInfoService;
 
     @Test
     void test1() {
-        System.err.println(attrService.listAttrSaleListCategoryId(225L));
-        System.err.println(attrService.listAttrSaleListCategoryId(223L));
-
+        SpuInfoEntity spuInfoEntity = new SpuInfoEntity();
+        spuInfoEntity.setBrandId(1L);
+        spuInfoService.save(spuInfoEntity);
     }
 }

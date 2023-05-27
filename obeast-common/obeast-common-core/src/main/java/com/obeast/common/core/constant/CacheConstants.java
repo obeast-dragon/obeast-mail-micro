@@ -13,10 +13,18 @@ public interface CacheConstants {
      * oauth 缓存前缀
      */
     String PROJECT_OAUTH_ACCESS = "token::access_token";
+
+
     /**
      * 菜单信息缓存
      */
     String MENU_DETAILS = "MENU_LIST";
+
+
+    /**
+     * 商品分类信息缓存
+     */
+    String CATEGORY_DETAILS = "CATEGORY_DETAILS";
 
 
     /**

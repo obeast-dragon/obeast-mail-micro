@@ -5,6 +5,8 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.amazonaws.services.s3.model.S3Object;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.obeast.admin.api.entity.SysFile;
 import com.obeast.admin.biz.mapper.SysFileMapper;
@@ -42,12 +44,36 @@ public class SysFileServiceImpl extends ServiceImpl<SysFileMapper, SysFile> impl
 
 	private final OssTemplate ossTemplate;
 
+
+	@Override
+	public Object getLocalFileByOriginalName(String originalFilename) {
+		if (StrUtil.isNotBlank(originalFilename)) {
+			LambdaQueryWrapper<SysFile> queryWrapper = Wrappers.lambdaQuery();
+			queryWrapper.eq(SysFile::getOriginal, originalFilename);
+			List<SysFile> fileList = this.list(queryWrapper);
+			if (fileList.isEmpty()) {
+				return null;
+			}
+			SysFile sysFile = fileList.get(0);
+			Map<String, String> resultMap = new HashMap<>(4);
+			resultMap.put("bucketName", ossProperties.getBucketName());
+			resultMap.put("fileName", sysFile.getFileName());
+			resultMap.put("url",  String.format("/admin/sysFile/%s/%s", ossProperties.getBucketName(), sysFile.getFileName()));
+			return resultMap;
+		}
+		return null;
+	}
+
 	/**
 	 * 上传文件
 	 * @param file file
 	 */
 	@Override
 	public Object uploadFile(MultipartFile file) {
+		Object localFileByOriginalName = getLocalFileByOriginalName(file.getOriginalFilename());
+		if (localFileByOriginalName != null) {
+			return localFileByOriginalName;
+		}
 		String fileName = IdUtil.simpleUUID() + StrUtil.DOT + FileUtil.extName(file.getOriginalFilename());
 		Map<String, String> resultMap = new HashMap<>(4);
 		resultMap.put("bucketName", ossProperties.getBucketName());
