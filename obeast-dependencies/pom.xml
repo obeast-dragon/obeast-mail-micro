@@ -119,6 +119,11 @@
             <dependency>
                 <groupId>com.obeast</groupId>
                 <artifactId>obeast-ware-api</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>com.obeast</groupId>
+                <artifactId>obeast-order-api</artifactId>
                 <version>${obeast.common.version}</version>
             </dependency>
 
