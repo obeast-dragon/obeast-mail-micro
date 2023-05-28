@@ -17,4 +17,34 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <!--core 工具类-->
+        <dependency>
+            <groupId>com.obeast</groupId>
+            <artifactId>obeast-common-core</artifactId>
+        </dependency>
+        <!--feign 注解依赖-->
+        <dependency>
+            <groupId>com.obeast</groupId>
+            <artifactId>obeast-common-feign</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--mybatis 依赖-->
+        <dependency>
+            <groupId>com.obeast</groupId>
+            <artifactId>obeast-common-mybatis</artifactId>
+        </dependency>
+        <!--swagger-->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+
+        <!-- excel 导入导出 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

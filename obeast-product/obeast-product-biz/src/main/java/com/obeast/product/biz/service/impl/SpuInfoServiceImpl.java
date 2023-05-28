@@ -192,7 +192,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoMapper, SpuInfoEntity
             queryWrapper.eq(SpuInfoEntity::getPublishStatus, publishStatus);
         }
         if (StrUtil.isNotBlank(spuName)) {
-            queryWrapper.eq(SpuInfoEntity::getSpuName, spuName);
+            queryWrapper.like(SpuInfoEntity::getSpuName, spuName);
         }
         return this.page(page, queryWrapper);
     }

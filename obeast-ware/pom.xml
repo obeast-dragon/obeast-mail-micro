@@ -11,6 +11,9 @@
 
     <artifactId>obeast-ware</artifactId>
     <packaging>pom</packaging>
+
+    <description>库存模块</description>
+
     <modules>
         <module>obeast-ware-api</module>
         <module>obeast-ware-biz</module>
