@@ -2,6 +2,7 @@ package com.obeast.admin.biz.service.impl;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -361,6 +362,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		userDTO.setPostList(postIdList);
 		// 插入用户
 		this.saveUser(userDTO);
+	}
+
+	@Override
+	public List<JSONObject> listUserObj() {
+		return this.list().stream()
+				.map(item -> {
+					JSONObject object = new JSONObject();
+					object.put("userId", item.getUserId());
+					object.put("nickName", item.getNickName());
+					object.put("username", item.getUsername());
+					return object;
+				})
+				.toList();
 	}
 
 	/**

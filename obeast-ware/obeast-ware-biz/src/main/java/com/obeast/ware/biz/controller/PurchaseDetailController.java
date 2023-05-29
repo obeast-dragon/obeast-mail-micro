@@ -20,9 +20,9 @@ import javax.validation.Valid;
  * @author wxl
  * Date 2023-05-28 20:40:51
  * @version 1.0
- * Description: 采购单
+ * Description: 采购单需求
  */
-@Tag(name = "采购单接口")
+@Tag(name = "采购单需求接口")
 @RestController
 @RequestMapping("/purchaseDetail")
 @RequiredArgsConstructor
@@ -37,9 +37,12 @@ public class PurchaseDetailController {
       */
     @GetMapping("/page")
     public CommonResult<IPage<PurchaseDetailEntity>> page(
-            Page<PurchaseDetailEntity> page
+            Page<PurchaseDetailEntity> page,
+            @RequestParam(value = "wareId", required = false) Long wareId,
+            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "skuId", required = false) Long skuId
     ) {
-        return CommonResult.success(purchaseDetailService.pagePurchaseDetails(page));
+        return CommonResult.success(purchaseDetailService.pagePurchaseDetails(page, wareId, status, skuId));
     }
 
 

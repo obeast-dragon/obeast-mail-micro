@@ -51,5 +51,8 @@ public class SkuInfoController {
         return CommonResult.success(skuInfoService.pageSkuInfo(page, categoryId, brandId, priceMin, priceMax , skuName));
     }
 
-
+    @GetMapping("/getById")
+    public CommonResult<SkuInfoEntity> getInfoById (@RequestParam(value = "skuId") Long skuId) {
+        return CommonResult.success(skuInfoService.getById(skuId));
+    }
 }

@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.ware.api.entity.WareSkuEntity;
 
+import java.util.List;
+
 
 /**
  * @author wxl
@@ -51,5 +53,34 @@ public interface WareSkuService extends IService<WareSkuEntity> {
      */
     Boolean updateWareSku(WareSkuEntity wareSkuEntity);
 
+    /**
+     * Description: 根据商品Id和仓库Id查询库存
+     * @author wxl
+     * Date: 2023/5/29 13:10
+     * @param skuId skuId
+     * @param wareId wareId
+     * @return java.util.List<com.obeast.ware.api.entity.WareSkuEntity>
+     */
+    List<WareSkuEntity> listBySkuIdAndWareId(Long skuId, Long wareId);
+
+    /**
+     * Description: 添加库存
+     * @author wxl
+     * Date: 2023/5/29 13:07
+     * @param skuId skuId
+     * @param wareId wareId
+     * @param skuNum skuNum
+     */
+    void addOrUpdateStock(Long skuId, Long wareId, Integer skuNum);
+
+    /**
+     * Description: 更新库存
+     * @author wxl
+     * Date: 2023/5/29 13:27
+     * @param skuId skuId
+     * @param wareId wareId
+     * @param skuNum  skuNum
+     */
+    void updateStock(Long skuId, Long wareId, Integer skuNum);
 }
 

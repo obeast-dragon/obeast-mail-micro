@@ -1,5 +1,7 @@
 package com.obeast.ware.biz.controller;
 
+import com.obeast.ware.api.vo.PurchaseDoneVo;
+import com.obeast.ware.api.vo.PurchaseMergeVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import com.obeast.ware.api.entity.PurchaseEntity;
@@ -13,7 +15,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.ware.biz.service.PurchaseService;
 
 import javax.validation.Valid;
-
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -31,15 +34,59 @@ public class PurchaseController {
     private final PurchaseService purchaseService;
 
     /**
-      * 分页查询
-      *
-      * @param page   分页对象
-      */
+     * 分页查询
+     *
+     * @param page 分页对象
+     */
     @GetMapping("/page")
     public CommonResult<IPage<PurchaseEntity>> page(
             Page<PurchaseEntity> page
     ) {
         return CommonResult.success(purchaseService.pagePurchases(page));
+    }
+
+    /**
+     * 分页查询未领取的采购单
+     */
+    @GetMapping("/unclaimed/page")
+    public CommonResult<IPage<PurchaseEntity>> unclaimedPage(Page<PurchaseEntity> page) {
+        return CommonResult.success(purchaseService.pageUnclaimedPurchases(page));
+    }
+
+
+    /**
+     * 查询所有未领取的采购单
+     */
+    @GetMapping("/unclaimed/list")
+    public CommonResult<List<PurchaseEntity>> unclaimedList() {
+        return CommonResult.success(purchaseService.listUnclaimedPurchases());
+    }
+
+    @PostMapping("/merge")
+    public CommonResult<?> purchaseMerge(@Valid @RequestBody PurchaseMergeVo purchaseMergeVo) {
+        System.err.println(purchaseMergeVo);
+//        purchaseService.purchaseMerge(purchaseMergeVo);
+        return CommonResult.success();
+    }
+
+    /**
+     * /ware/purchase/received
+     * 领取的采购单
+     */
+    @PostMapping("/received")
+    public CommonResult<?> receivedPurchase(@RequestBody List<Long> purchaseIds) {
+        purchaseService.receivedPurchase(purchaseIds);
+        return CommonResult.success();
+    }
+
+    /**
+     * /ware/purchase/done
+     * 完成的采购单
+     */
+    @PostMapping("/done")
+    public CommonResult<?> PurchaseDone(@RequestBody PurchaseDoneVo purchaseDoneVo) {
+        purchaseService.donePurchase(purchaseDoneVo);
+        return CommonResult.success();
     }
 
 

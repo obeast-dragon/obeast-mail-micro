@@ -2,6 +2,7 @@ package com.obeast.admin.biz.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -77,6 +78,11 @@ public class SysUserController {
 			return CommonResult.error(MsgUtil.getMessage(ErrorCodes.SYS_USER_USERINFO_EMPTY, username));
 		}
 		return CommonResult.success(userService.getUserInfo(user));
+	}
+
+	@GetMapping("/listObj")
+	public CommonResult<List<JSONObject>> listUserObj () {
+		return CommonResult.success(userService.listUserObj());
 	}
 
 	/**

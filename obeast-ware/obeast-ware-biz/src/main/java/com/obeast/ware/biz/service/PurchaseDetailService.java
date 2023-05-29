@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.obeast.ware.api.entity.PurchaseDetailEntity;
 
+import java.util.List;
+
 
 /**
  * @author wxl
@@ -15,13 +17,17 @@ import com.obeast.ware.api.entity.PurchaseDetailEntity;
 public interface PurchaseDetailService extends IService<PurchaseDetailEntity> {
 
     /**
-    * Description: 分页查询品牌
-    * @author wxl
-    * Date: 2023/5/20 22:57
-    * @param page page
-    * @return PurchaseDetailEntity
-    */
-    IPage<PurchaseDetailEntity> pagePurchaseDetails (Page<PurchaseDetailEntity> page);
+     * Description: 分页查询品牌
+     *
+     * @param page   page
+     * @param wareId wareId
+     * @param status status
+     * @param skuId skuId
+     * @return PurchaseDetailEntity
+     * @author wxl
+     * Date: 2023/5/20 22:57
+     */
+    IPage<PurchaseDetailEntity> pagePurchaseDetails (Page<PurchaseDetailEntity> page, Long wareId, Integer status, Long skuId);
 
 
     /**
@@ -51,5 +57,14 @@ public interface PurchaseDetailService extends IService<PurchaseDetailEntity> {
      */
     Boolean updatePurchaseDetail(PurchaseDetailEntity purchaseDetailEntity);
 
+
+    /**
+     * Description: 根据采购单Id查询采购需求
+     * @author wxl
+     * Date: 2023/5/29 12:56
+     * @param id id
+     * @return java.util.List<com.obeast.ware.api.entity.PurchaseDetailEntity>
+     */
+    List<PurchaseDetailEntity> listDetailByPurchaseId(Long id);
 }
 

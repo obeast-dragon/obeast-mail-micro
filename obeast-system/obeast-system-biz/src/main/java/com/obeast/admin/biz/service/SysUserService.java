@@ -1,6 +1,7 @@
 package com.obeast.admin.biz.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -121,5 +122,14 @@ public interface SysUserService extends IService<SysUser> {
      * @return success/false
      */
 	CommonResult<Boolean> registerUser(UserDTO userDto);
+
+
+    /**
+     * Description: 查询用户
+     * @author wxl
+     * Date: 2023/5/29 15:12
+     * @return java.util.List<java.lang.Object>
+     */
+    List<JSONObject> listUserObj();
 
 }

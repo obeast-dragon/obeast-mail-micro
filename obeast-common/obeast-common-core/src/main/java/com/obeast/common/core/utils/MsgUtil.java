@@ -16,8 +16,7 @@ public class MsgUtil {
 
 	/**
 	 * 通过code 获取中文错误信息
-	 * @param code
-	 * @return
+	 * @param code code
 	 */
 	public String getMessage(String code) {
 		MessageSource messageSource = SpringBeanUtil.getBean("messageSource");
@@ -26,8 +25,7 @@ public class MsgUtil {
 
 	/**
 	 * 通过code 和参数获取中文错误信息
-	 * @param code
-	 * @return
+	 * @param code code
 	 */
 	public String getMessage(String code, Object... objects) {
 		MessageSource messageSource = SpringBeanUtil.getBean("messageSource");
@@ -36,8 +34,7 @@ public class MsgUtil {
 
 	/**
 	 * security 通过code 和参数获取中文错误信息
-	 * @param code
-	 * @return
+	 * @param code code
 	 */
 	public String getSecurityMessage(String code, Object... objects) {
 		MessageSource messageSource = SpringBeanUtil.getBean("securityMessageSource");

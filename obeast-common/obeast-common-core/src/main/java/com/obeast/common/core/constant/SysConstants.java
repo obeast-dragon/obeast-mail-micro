@@ -89,5 +89,11 @@ public interface SysConstants {
          * */
         String MARKET_SERVICE = "obeast-market-biz";
 
+
+        /**
+         * product 模块
+         * */
+        String PRODUCT_SERVICE = "obeast-product-biz";
+
     }
 }
