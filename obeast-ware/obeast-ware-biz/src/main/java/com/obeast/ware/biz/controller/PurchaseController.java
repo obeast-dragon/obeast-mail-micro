@@ -16,7 +16,6 @@ import com.obeast.ware.biz.service.PurchaseService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -64,8 +63,7 @@ public class PurchaseController {
 
     @PostMapping("/merge")
     public CommonResult<?> purchaseMerge(@Valid @RequestBody PurchaseMergeVo purchaseMergeVo) {
-        System.err.println(purchaseMergeVo);
-//        purchaseService.purchaseMerge(purchaseMergeVo);
+        purchaseService.purchaseMerge(purchaseMergeVo);
         return CommonResult.success();
     }
 

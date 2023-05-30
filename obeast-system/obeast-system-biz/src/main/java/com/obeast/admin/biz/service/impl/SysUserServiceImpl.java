@@ -372,6 +372,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 					object.put("userId", item.getUserId());
 					object.put("nickName", item.getNickName());
 					object.put("username", item.getUsername());
+					object.put("phone", item.getPhone());
 					return object;
 				})
 				.toList();
