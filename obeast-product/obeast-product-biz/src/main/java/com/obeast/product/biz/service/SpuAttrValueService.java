@@ -21,5 +21,7 @@ public interface SpuAttrValueService extends IService<SpuAttrValueEntity> {
      */
     void saveProductAttr(List<SpuAttrValueEntity> spuAttrValues);
 
+
+    List<SpuAttrValueEntity> listBySpuId(Long spuId);
 }
 

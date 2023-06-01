@@ -1,5 +1,7 @@
 package com.obeast.product.biz.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -19,6 +21,13 @@ import java.util.List;
 @Service("spuAttrValueService")
 public class SpuAttrValueServiceImpl extends ServiceImpl<SpuAttrValueMapper, SpuAttrValueEntity> implements SpuAttrValueService {
 
+
+    @Override
+    public List<SpuAttrValueEntity> listBySpuId(Long spuId) {
+        LambdaQueryWrapper<SpuAttrValueEntity> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.eq(SpuAttrValueEntity::getSpuId, spuId);
+        return this.list(queryWrapper);
+    }
 
     @Override
     public void saveProductAttr(List<SpuAttrValueEntity> spuAttrValues) {
